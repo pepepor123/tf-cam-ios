@@ -31,6 +31,7 @@ class SecondViewController: UIViewController {
     navigationItem.title = "Second View"
 
     previewView = PreviewView(frame: self.view.bounds)
+    cameraFeedManager.delegate = self
     cameraFeedManager.checkCameraConfigurationAndStartSession()
   }
 
