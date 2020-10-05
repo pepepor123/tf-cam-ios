@@ -13,6 +13,7 @@
 		94A999A525260B2F003428FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A999A425260B2F003428FE /* Assets.xcassets */; };
 		94A999A825260B2F003428FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A999A625260B2F003428FE /* LaunchScreen.storyboard */; };
 		94A999BF252631FC003428FE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A999BE252631FC003428FE /* SecondViewController.swift */; };
+		94A999D4252AD8C1003428FE /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A999D3252AD8C1003428FE /* PreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		94A999A725260B2F003428FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94A999A925260B2F003428FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94A999BE252631FC003428FE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		94A999D3252AD8C1003428FE /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		94A9999A25260B2D003428FE /* tf-cam */ = {
 			isa = PBXGroup;
 			children = (
+				94A999D2252AD89E003428FE /* Camera */,
 				94A9999B25260B2D003428FE /* AppDelegate.swift */,
 				94A9999D25260B2D003428FE /* SceneDelegate.swift */,
 				94A9999F25260B2D003428FE /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				94A999BE252631FC003428FE /* SecondViewController.swift */,
 			);
 			path = "tf-cam";
+			sourceTree = "<group>";
+		};
+		94A999D2252AD89E003428FE /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				94A999D3252AD8C1003428FE /* PreviewView.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94A999D4252AD8C1003428FE /* PreviewView.swift in Sources */,
 				94A999BF252631FC003428FE /* SecondViewController.swift in Sources */,
 				94A999A025260B2D003428FE /* ViewController.swift in Sources */,
 				94A9999C25260B2D003428FE /* AppDelegate.swift in Sources */,
