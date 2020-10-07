@@ -21,6 +21,13 @@ class SecondViewController: UIViewController {
   private let labelOffset: CGFloat = 10.0
   private let delayBetweenInferencesMs: Double = 200
 
+  // Audio players
+  private var playerLeft  : AVAudioPlayer?
+  private var playerRight : AVAudioPlayer?
+  private var playerUp    : AVAudioPlayer?
+  private var playerDown  : AVAudioPlayer?
+  private var playerBeep  : AVAudioPlayer?
+
   // Holds the detection result
   private var result: Result?
   private var previousInferenceTimeMs: TimeInterval = Date.distantPast.timeIntervalSince1970 * 1000
@@ -53,6 +60,16 @@ class SecondViewController: UIViewController {
     overlayView = OverlayView(frame: overlayViewFrame)
     overlayView.clearsContextBeforeDrawing = true
     overlayView.backgroundColor = UIColor.clear
+
+    do {
+      playerLeft  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "left" , ofType: "mp3")!))
+      playerRight = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "right", ofType: "mp3")!))
+      playerUp    = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "up"   , ofType: "mp3")!))
+      playerDown  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "down" , ofType: "mp3")!))
+      playerBeep  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "beep" , ofType: "mp3")!))
+    } catch {
+      print("Failed to load the sound.")
+    }
 
     cameraFeedManager.delegate = self
     cameraFeedManager.checkCameraConfigurationAndStartSession()
@@ -89,6 +106,29 @@ extension SecondViewController: CameraFeedManagerDelegate {
 
   func didOutput(pixelBuffer: CVPixelBuffer) {
     runModel(onPixelBuffer: pixelBuffer)
+
+    // Provides audio feedback.
+    let selectedClass = "laptop"
+    let obj = result?.inferences.first(where: { $0.className == selectedClass })
+
+    let imageWidth = CVPixelBufferGetWidth(pixelBuffer)
+    let imageHeight = CVPixelBufferGetHeight(pixelBuffer)
+
+    if obj != nil {
+      if obj?.className == selectedClass {
+        if (obj?.rect.midX)! < CGFloat(imageWidth / 3) {
+          playerLeft?.play()
+        } else if (obj?.rect.midX)! > CGFloat(imageWidth * 2 / 3) {
+          playerRight?.play()
+        } else if (obj?.rect.midY)! < CGFloat(imageHeight / 3) {
+          playerUp?.play()
+        } else if (obj?.rect.midY)! > CGFloat(imageHeight * 2 / 3) {
+          playerDown?.play()
+        } else {
+          playerBeep?.play()
+        }
+      }
+    }
   }
 
   func presentVideoConfigurationErrorAlert() {
