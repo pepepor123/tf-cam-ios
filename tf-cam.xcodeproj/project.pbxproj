@@ -19,6 +19,7 @@
 		94A99A02252C2EB2003428FE /* labelmap.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94A99A00252C2EB2003428FE /* labelmap.txt */; };
 		94A99A03252C2EB2003428FE /* detect.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 94A99A01252C2EB2003428FE /* detect.tflite */; };
 		94A99A0E252C79B3003428FE /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A99A0D252C79B3003428FE /* OverlayView.swift */; };
+		94A99A11252C7FED003428FE /* ModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A99A10252C7FED003428FE /* ModelDataHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		94A99A00252C2EB2003428FE /* labelmap.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labelmap.txt; sourceTree = "<group>"; };
 		94A99A01252C2EB2003428FE /* detect.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = detect.tflite; sourceTree = "<group>"; };
 		94A99A0D252C79B3003428FE /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		94A99A10252C7FED003428FE /* ModelDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDataHandler.swift; sourceTree = "<group>"; };
 		B468745B4306373C82A2132D /* Pods-tf-cam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tf-cam.release.xcconfig"; path = "Target Support Files/Pods-tf-cam/Pods-tf-cam.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 		94A99A05252C2F5D003428FE /* Detection */ = {
 			isa = PBXGroup;
 			children = (
+				94A99A10252C7FED003428FE /* ModelDataHandler.swift */,
 				94A99A0D252C79B3003428FE /* OverlayView.swift */,
 			);
 			path = Detection;
@@ -229,6 +232,7 @@
 			files = (
 				94A999D4252AD8C1003428FE /* PreviewView.swift in Sources */,
 				94A999BF252631FC003428FE /* SecondViewController.swift in Sources */,
+				94A99A11252C7FED003428FE /* ModelDataHandler.swift in Sources */,
 				94A99A0E252C79B3003428FE /* OverlayView.swift in Sources */,
 				94A999A025260B2D003428FE /* ViewController.swift in Sources */,
 				94A9999C25260B2D003428FE /* AppDelegate.swift in Sources */,
