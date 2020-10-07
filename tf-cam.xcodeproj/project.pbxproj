@@ -20,6 +20,11 @@
 		94A99A03252C2EB2003428FE /* detect.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 94A99A01252C2EB2003428FE /* detect.tflite */; };
 		94A99A0E252C79B3003428FE /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A99A0D252C79B3003428FE /* OverlayView.swift */; };
 		94A99A11252C7FED003428FE /* ModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A99A10252C7FED003428FE /* ModelDataHandler.swift */; };
+		94A99A2A252E1E85003428FE /* up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 94A99A25252E1E85003428FE /* up.mp3 */; };
+		94A99A2B252E1E85003428FE /* right.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 94A99A26252E1E85003428FE /* right.mp3 */; };
+		94A99A2C252E1E85003428FE /* down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 94A99A27252E1E85003428FE /* down.mp3 */; };
+		94A99A2D252E1E85003428FE /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 94A99A28252E1E85003428FE /* beep.mp3 */; };
+		94A99A2E252E1E85003428FE /* left.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 94A99A29252E1E85003428FE /* left.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +44,11 @@
 		94A99A01252C2EB2003428FE /* detect.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = detect.tflite; sourceTree = "<group>"; };
 		94A99A0D252C79B3003428FE /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		94A99A10252C7FED003428FE /* ModelDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDataHandler.swift; sourceTree = "<group>"; };
+		94A99A25252E1E85003428FE /* up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = up.mp3; sourceTree = "<group>"; };
+		94A99A26252E1E85003428FE /* right.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = right.mp3; sourceTree = "<group>"; };
+		94A99A27252E1E85003428FE /* down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = down.mp3; sourceTree = "<group>"; };
+		94A99A28252E1E85003428FE /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		94A99A29252E1E85003428FE /* left.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = left.mp3; sourceTree = "<group>"; };
 		B468745B4306373C82A2132D /* Pods-tf-cam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tf-cam.release.xcconfig"; path = "Target Support Files/Pods-tf-cam/Pods-tf-cam.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +85,7 @@
 		94A9999A25260B2D003428FE /* tf-cam */ = {
 			isa = PBXGroup;
 			children = (
+				94A99A24252E1E44003428FE /* Sounds */,
 				94A99A05252C2F5D003428FE /* Detection */,
 				94A999FF252C2E8E003428FE /* Model */,
 				94A999D2252AD89E003428FE /* Camera */,
@@ -114,6 +125,18 @@
 				94A99A0D252C79B3003428FE /* OverlayView.swift */,
 			);
 			path = Detection;
+			sourceTree = "<group>";
+		};
+		94A99A24252E1E44003428FE /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				94A99A28252E1E85003428FE /* beep.mp3 */,
+				94A99A27252E1E85003428FE /* down.mp3 */,
+				94A99A29252E1E85003428FE /* left.mp3 */,
+				94A99A26252E1E85003428FE /* right.mp3 */,
+				94A99A25252E1E85003428FE /* up.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		9D20D99C28531A97B666E88C /* Pods */ = {
@@ -191,9 +214,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94A99A2A252E1E85003428FE /* up.mp3 in Resources */,
 				94A99A03252C2EB2003428FE /* detect.tflite in Resources */,
+				94A99A2E252E1E85003428FE /* left.mp3 in Resources */,
+				94A99A2D252E1E85003428FE /* beep.mp3 in Resources */,
 				94A99A02252C2EB2003428FE /* labelmap.txt in Resources */,
+				94A99A2B252E1E85003428FE /* right.mp3 in Resources */,
 				94A999A825260B2F003428FE /* LaunchScreen.storyboard in Resources */,
+				94A99A2C252E1E85003428FE /* down.mp3 in Resources */,
 				94A999A525260B2F003428FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
