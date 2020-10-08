@@ -91,7 +91,7 @@ class SecondViewController: UIViewController {
   }
 
   @objc func btnFunc() {
-    print("Button was pressed.")
+    self.cameraFeedManager.takePhoto()
   }
 
   override func viewWillDisappear(_ animated: Bool) {

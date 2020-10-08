@@ -47,7 +47,8 @@ class CameraFeedManager: NSObject {
   private let previewView: PreviewView
   private let sessionQueue = DispatchQueue(label: "sessionQueue")
   private var cameraConfiguration: CameraConfiguration = .failure
-  private lazy var videoDataOutput = AVCaptureVideoDataOutput()
+  private var videoDataOutput = AVCaptureVideoDataOutput()
+  private var photoOutput =  AVCapturePhotoOutput()
   private var isSessionRunning = false
 
   // MARK: CameraFeedManagerDelegate
@@ -184,6 +185,13 @@ class CameraFeedManager: NSObject {
       return
     }
 
+    // Tries to add an AVCapturePhotoOutput.
+    guard addPhotoOutput() else {
+      self.session.commitConfiguration()
+      self.cameraConfiguration = .failure
+      return
+    }
+
     session.commitConfiguration()
     self.cameraConfiguration = .success
   }
@@ -224,6 +232,18 @@ class CameraFeedManager: NSObject {
     if session.canAddOutput(videoDataOutput) {
       session.addOutput(videoDataOutput)
       videoDataOutput.connection(with: .video)?.videoOrientation = .landscapeLeft
+      return true
+    }
+    return false
+  }
+
+  /**
+   This method tries to add an AVCapturePhotoOutput to the current AVCaptureSession.
+   */
+  private func addPhotoOutput() -> Bool {
+    if session.canAddOutput(photoOutput) {
+      session.addOutput(photoOutput)
+      photoOutput.connection(with: .video)?.videoOrientation = .landscapeLeft
       return true
     }
     return false
@@ -271,13 +291,24 @@ class CameraFeedManager: NSObject {
     }
   }
 
+  /**
+   This method takes a photo and saves it to the user's Camera Roll album.
+   */
+  func takePhoto() {
+    let photoSettings = AVCapturePhotoSettings()
+    photoSettings.flashMode = .auto
+    photoSettings.isHighResolutionPhotoEnabled = false
+    photoOutput.capturePhoto(with: photoSettings, delegate: self)
+  }
+
 }
 
 /**
  AVCaptureVideoDataOutputSampleBufferDelegate
  */
 extension CameraFeedManager: AVCaptureVideoDataOutputSampleBufferDelegate {
-  /** This method delegates the CVPixelBuffer of the frame seen by the camera.
+  /**
+   This method delegates the CVPixelBuffer of the frame seen by the camera.
    */
   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 
@@ -291,5 +322,20 @@ extension CameraFeedManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     // Delegates the pixel buffer to the ViewController.
     delegate?.didOutput(pixelBuffer: imagePixelBuffer)
   }
+}
+
+/**
+ AVCapturePhotoCaptureDelegate
+ */
+extension CameraFeedManager: AVCapturePhotoCaptureDelegate {
+  /**
+   This method saves the photo to the user's Camera Roll album.
+   */
+  func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+    let imageData = photo.fileDataRepresentation()
+    let photo = UIImage(data: imageData!)
+    UIImageWriteToSavedPhotosAlbum(photo!, self, nil, nil)
+  }
+
 }
 
