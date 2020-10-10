@@ -17,12 +17,12 @@ protocol CameraFeedManagerDelegate: class {
   func didOutput(pixelBuffer: CVPixelBuffer)
 
   /**
-   This method initimates that the camera permissions have been denied.
+   This method intimates that the camera permissions have been denied.
    */
   func presentCameraPermissionsDeniedAlert()
 
   /**
-   This method initimates that there was an error in the video configuration.
+   This method intimates that there was an error in the video configuration.
    */
   func presentVideoConfigurationErrorAlert()
 
@@ -251,7 +251,7 @@ class CameraFeedManager: NSObject {
 
   // MARK: Notification Observer Handling
   private func addObservers() {
-    NotificationCenter.default.addObserver(self, selector: #selector(CameraFeedManager.sessionRuntimeErrorOccured(notification:)), name: NSNotification.Name.AVCaptureSessionRuntimeError, object: session)
+    NotificationCenter.default.addObserver(self, selector: #selector(CameraFeedManager.sessionRuntimeErrorOccurred(notification:)), name: NSNotification.Name.AVCaptureSessionRuntimeError, object: session)
     NotificationCenter.default.addObserver(self, selector: #selector(CameraFeedManager.sessionWasInterrupted(notification:)), name: NSNotification.Name.AVCaptureSessionWasInterrupted, object: session)
     NotificationCenter.default.addObserver(self, selector: #selector(CameraFeedManager.sessionInterruptionEnded), name: NSNotification.Name.AVCaptureSessionInterruptionEnded, object: session)
   }
@@ -275,7 +275,7 @@ class CameraFeedManager: NSObject {
     print("Capture session interruption ended")
   }
 
-  @objc func sessionRuntimeErrorOccured(notification: Notification) {
+  @objc func sessionRuntimeErrorOccurred(notification: Notification) {
     guard let error = notification.userInfo?[AVCaptureSessionErrorKey] as? AVError else {
       return
     }

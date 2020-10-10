@@ -133,7 +133,7 @@ extension SecondViewController: CameraFeedManagerDelegate {
 
   func presentVideoConfigurationErrorAlert() {
     let alertController = UIAlertController(
-      title: "Confirguration Failed",
+      title: "Configuration Failed",
       message: "Configuration of camera has failed.",
       preferredStyle: .alert
     )
