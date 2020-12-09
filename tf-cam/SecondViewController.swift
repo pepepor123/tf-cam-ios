@@ -12,7 +12,7 @@ class SecondViewController: UIViewController {
 
   var previewView: PreviewView!
   var overlayView: OverlayView!
-  let button = UIButton(frame: CGRect(x: 40, y: 60, width: 120, height: 60))
+  var button: UIButton!
   private lazy var cameraFeedManager = CameraFeedManager(previewView: previewView)
 
   // MARK: Constants
@@ -49,7 +49,7 @@ class SecondViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = UIColor.black
-    navigationItem.title = "Second View"
+    navigationItem.title = "カメラ画面"
 
     previewView = PreviewView(frame: self.view.bounds)
 
@@ -83,8 +83,11 @@ class SecondViewController: UIViewController {
     view.addSubview(previewView)
     view.addSubview(overlayView)
 
+    let buttonWidth = 200
+    let buttonFrame = CGRect(x: Int(self.view.bounds.width) - buttonWidth, y: 0, width: buttonWidth, height: Int(self.view.bounds.height))
+    button = UIButton(frame: buttonFrame)
     button.backgroundColor = UIColor.yellow
-    button.setTitle("button", for: .normal)
+    button.setTitle("撮影", for: .normal)
     button.setTitleColor(.black, for: .normal)
     button.addTarget(self, action: #selector(btnFunc), for: .touchUpInside)
     self.view.addSubview(button)
@@ -108,14 +111,13 @@ extension SecondViewController: CameraFeedManagerDelegate {
     runModel(onPixelBuffer: pixelBuffer)
 
     // Provides audio feedback.
-    let selectedClass = "laptop"
-    let obj = result?.inferences.first(where: { $0.className == selectedClass })
+    let obj = result?.inferences.first(where: { $0.className == selectedCategory })
 
     let imageWidth = CVPixelBufferGetWidth(pixelBuffer)
     let imageHeight = CVPixelBufferGetHeight(pixelBuffer)
 
     if obj != nil {
-      if obj?.className == selectedClass {
+      if obj?.className == selectedCategory {
         if (obj?.rect.midX)! < CGFloat(imageWidth / 3) {
           playerLeft?.play()
         } else if (obj?.rect.midX)! > CGFloat(imageWidth * 2 / 3) {

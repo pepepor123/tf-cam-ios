@@ -8,10 +8,12 @@
 import UIKit
 import AVFoundation
 
+var selectedCategory = ""
+
 class ViewController: UIViewController {
 
   var tableView = UITableView()
-  var tableData = ["Item 0", "Item 1", "Item 2", "Item 3"]
+  var tableData: [String] = []
 
   var cameraPermission: AVAuthorizationStatus = .notDetermined
 
@@ -22,7 +24,24 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = UIColor.white
-    navigationItem.title = "First View"
+    navigationItem.title = "被写体カテゴリ選択画面"
+
+    guard let fileURL = Bundle.main.url(forResource: "labelmap", withExtension: "txt")  else {
+      fatalError("Could not find file")
+    }
+
+    guard let fileContents = try? String(contentsOf: fileURL) else {
+      fatalError("Could not read file")
+    }
+
+    let categories = fileContents.components(separatedBy: "\n")
+
+    for category in categories {
+      print(category)
+      if category != "???" && category != "" {
+        tableData.append(category)
+      }
+    }
 
     tableView = UITableView(frame: self.view.bounds)
     tableView.delegate = self
@@ -55,12 +74,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "item", for: indexPath)
-    cell.textLabel?.text = "Label: \(tableData[indexPath.row])"
+    cell.textLabel?.text = tableData[indexPath.row]
     return cell
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("Cell \(indexPath.row) was pressed.")
+    selectedCategory = tableData[indexPath.row]
     let vc = SecondViewController()
     navigationController?.pushViewController(vc, animated: true)
   }
