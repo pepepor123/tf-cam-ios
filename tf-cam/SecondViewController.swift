@@ -83,10 +83,11 @@ class SecondViewController: UIViewController {
     view.addSubview(previewView)
     view.addSubview(overlayView)
 
-    let buttonWidth = 200
-    let buttonFrame = CGRect(x: Int(self.view.bounds.width) - buttonWidth, y: 0, width: buttonWidth, height: Int(self.view.bounds.height))
-    button = UIButton(frame: buttonFrame)
+//    let buttonWidth = 200
+//    let buttonFrame = CGRect(x: Int(self.view.bounds.width) - buttonWidth, y: 0, width: buttonWidth, height: Int(self.view.bounds.height))
+    button = UIButton(frame: self.view.bounds)
     button.backgroundColor = UIColor.yellow
+    button.alpha = 0.1
     button.setTitle("撮影", for: .normal)
     button.setTitleColor(.black, for: .normal)
     button.addTarget(self, action: #selector(btnFunc), for: .touchUpInside)
