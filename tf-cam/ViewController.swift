@@ -13,7 +13,7 @@ var selectedCategory = ""
 class ViewController: UIViewController {
 
   var tableView = UITableView()
-  var tableData: [String] = []
+  var tableData = [[String: String]]()
 
   var cameraPermission: AVAuthorizationStatus = .notDetermined
 
@@ -34,12 +34,11 @@ class ViewController: UIViewController {
       fatalError("Could not read file")
     }
 
-    let categories = fileContents.components(separatedBy: "\n")
-
-    for category in categories {
-      print(category)
-      if category != "???" && category != "" {
-        tableData.append(category)
+    let lines = fileContents.components(separatedBy: "\n")
+    for line in lines {
+      let category = line.components(separatedBy: ",")
+      if category[0] != "???" && category[0] != "" {
+        tableData.append(["label": category[0], "label_jp": category[1]])
       }
     }
 
@@ -74,13 +73,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "item", for: indexPath)
-    cell.textLabel?.text = tableData[indexPath.row]
+    cell.textLabel?.text = tableData[indexPath.row]["label_jp"]
     return cell
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("Cell \(indexPath.row) was pressed.")
-    selectedCategory = tableData[indexPath.row]
+    selectedCategory = tableData[indexPath.row]["label"] ?? ""
     let vc = SecondViewController()
     navigationController?.pushViewController(vc, animated: true)
   }
