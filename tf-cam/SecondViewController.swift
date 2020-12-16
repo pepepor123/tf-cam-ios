@@ -26,6 +26,8 @@ class SecondViewController: UIViewController {
   private var playerRight : AVAudioPlayer?
   private var playerUp    : AVAudioPlayer?
   private var playerDown  : AVAudioPlayer?
+  private var playerCloser  : AVAudioPlayer?
+  private var playerFarther : AVAudioPlayer?
   private var playerBeep  : AVAudioPlayer?
 
   // Holds the detection result
@@ -49,7 +51,7 @@ class SecondViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = UIColor.black
-    navigationItem.title = "カメラ画面"
+//    navigationItem.title = "カメラ画面"
 
     previewView = PreviewView(frame: self.view.bounds)
 
@@ -62,10 +64,12 @@ class SecondViewController: UIViewController {
     overlayView.backgroundColor = UIColor.clear
 
     do {
-      playerLeft  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "left" , ofType: "mp3")!))
-      playerRight = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "right", ofType: "mp3")!))
-      playerUp    = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "up"   , ofType: "mp3")!))
-      playerDown  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "down" , ofType: "mp3")!))
+      playerLeft  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "左" , ofType: "mp3")!))
+      playerRight = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "右", ofType: "mp3")!))
+      playerUp    = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "上"   , ofType: "mp3")!))
+      playerDown  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "下" , ofType: "mp3")!))
+      playerCloser  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "とおすぎます" , ofType: "mp3")!))
+      playerFarther = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "ちかすぎます" , ofType: "mp3")!))
       playerBeep  = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "beep" , ofType: "mp3")!))
     } catch {
       print("Failed to load the sound.")
@@ -88,7 +92,7 @@ class SecondViewController: UIViewController {
     button = UIButton(frame: self.view.bounds)
     button.backgroundColor = UIColor.yellow
     button.alpha = 0.1
-    button.setTitle("撮影", for: .normal)
+    button.setTitle("画面をタップすると写真を撮影できます", for: .normal)
     button.setTitleColor(.black, for: .normal)
     button.addTarget(self, action: #selector(btnFunc), for: .touchUpInside)
     self.view.addSubview(button)
@@ -127,6 +131,10 @@ extension SecondViewController: CameraFeedManagerDelegate {
           playerUp?.play()
         } else if (obj?.rect.midY)! > CGFloat(imageHeight * 2 / 3) {
           playerDown?.play()
+        } else if (max((obj?.rect.width)! / CGFloat(imageWidth), (obj?.rect.height)! / CGFloat(imageHeight)) < CGFloat(0.3)) {
+          playerCloser?.play()
+        } else if (max((obj?.rect.width)! / CGFloat(imageWidth), (obj?.rect.height)! / CGFloat(imageHeight)) > CGFloat(0.8)) {
+          playerFarther?.play()
         } else {
           playerBeep?.play()
         }

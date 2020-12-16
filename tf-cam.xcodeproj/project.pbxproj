@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6C3DF9DAF79D6930F39CD377 /* Pods_tf_cam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFFC0276639AC173512768B /* Pods_tf_cam.framework */; };
+		949D28EE2589A22B00394BD9 /* ちかすぎます.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 949D28E82589A22B00394BD9 /* ちかすぎます.mp3 */; };
+		949D28EF2589A22B00394BD9 /* とおすぎます.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 949D28E92589A22B00394BD9 /* とおすぎます.mp3 */; };
+		949D28F02589A22B00394BD9 /* 上.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 949D28EA2589A22B00394BD9 /* 上.mp3 */; };
+		949D28F12589A22B00394BD9 /* 右.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 949D28EB2589A22B00394BD9 /* 右.mp3 */; };
+		949D28F22589A22B00394BD9 /* 左.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 949D28EC2589A22B00394BD9 /* 左.mp3 */; };
+		949D28F32589A22B00394BD9 /* 下.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 949D28ED2589A22B00394BD9 /* 下.mp3 */; };
 		94A9999C25260B2D003428FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9999B25260B2D003428FE /* AppDelegate.swift */; };
 		94A9999E25260B2D003428FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9999D25260B2D003428FE /* SceneDelegate.swift */; };
 		94A999A025260B2D003428FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9999F25260B2D003428FE /* ViewController.swift */; };
@@ -30,6 +36,12 @@
 /* Begin PBXFileReference section */
 		29D1C2945BEDC74FD12E7340 /* Pods-tf-cam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tf-cam.debug.xcconfig"; path = "Target Support Files/Pods-tf-cam/Pods-tf-cam.debug.xcconfig"; sourceTree = "<group>"; };
 		3CFFC0276639AC173512768B /* Pods_tf_cam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tf_cam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		949D28E82589A22B00394BD9 /* ちかすぎます.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ちかすぎます.mp3"; sourceTree = "<group>"; };
+		949D28E92589A22B00394BD9 /* とおすぎます.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "とおすぎます.mp3"; sourceTree = "<group>"; };
+		949D28EA2589A22B00394BD9 /* 上.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "上.mp3"; sourceTree = "<group>"; };
+		949D28EB2589A22B00394BD9 /* 右.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "右.mp3"; sourceTree = "<group>"; };
+		949D28EC2589A22B00394BD9 /* 左.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "左.mp3"; sourceTree = "<group>"; };
+		949D28ED2589A22B00394BD9 /* 下.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "下.mp3"; sourceTree = "<group>"; };
 		94A9999825260B2D003428FE /* tf-cam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tf-cam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A9999B25260B2D003428FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A9999D25260B2D003428FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +142,12 @@
 		94A99A24252E1E44003428FE /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				949D28E82589A22B00394BD9 /* ちかすぎます.mp3 */,
+				949D28E92589A22B00394BD9 /* とおすぎます.mp3 */,
+				949D28EA2589A22B00394BD9 /* 上.mp3 */,
+				949D28ED2589A22B00394BD9 /* 下.mp3 */,
+				949D28EB2589A22B00394BD9 /* 右.mp3 */,
+				949D28EC2589A22B00394BD9 /* 左.mp3 */,
 				94A99A28252E1E85003428FE /* beep.mp3 */,
 				94A99A27252E1E85003428FE /* down.mp3 */,
 				94A99A29252E1E85003428FE /* left.mp3 */,
@@ -214,15 +232,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				949D28EF2589A22B00394BD9 /* とおすぎます.mp3 in Resources */,
+				949D28F22589A22B00394BD9 /* 左.mp3 in Resources */,
 				94A99A2A252E1E85003428FE /* up.mp3 in Resources */,
 				94A99A03252C2EB2003428FE /* detect.tflite in Resources */,
 				94A99A2E252E1E85003428FE /* left.mp3 in Resources */,
 				94A99A2D252E1E85003428FE /* beep.mp3 in Resources */,
+				949D28F32589A22B00394BD9 /* 下.mp3 in Resources */,
 				94A99A02252C2EB2003428FE /* labelmap.txt in Resources */,
+				949D28EE2589A22B00394BD9 /* ちかすぎます.mp3 in Resources */,
 				94A99A2B252E1E85003428FE /* right.mp3 in Resources */,
 				94A999A825260B2F003428FE /* LaunchScreen.storyboard in Resources */,
+				949D28F02589A22B00394BD9 /* 上.mp3 in Resources */,
 				94A99A2C252E1E85003428FE /* down.mp3 in Resources */,
 				94A999A525260B2F003428FE /* Assets.xcassets in Resources */,
+				949D28F12589A22B00394BD9 /* 右.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
